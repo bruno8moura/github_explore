@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
-const Title = styled.h1`
+export const Title = styled.h1`
     font-size: 48px;
-    color: #3A3A3A
-`;
+    color: #3A3A3A;
 
-export default Title;
+    margin-top: 80px;
+    max-width: 450px;
+    line-height: 56px
+`;
