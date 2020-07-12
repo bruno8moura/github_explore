@@ -43,3 +43,59 @@ export const Form = styled.form`
         }
     }
 `;
+
+export const Repositories = styled.div`
+    margin-top: 80px;
+    max-width: 700px;
+
+    a {
+        background: #fff;
+        border-radius: 5px;
+        padding: 15px;
+        text-decoration: none;
+
+        & + a{
+            margin-top: 10px;
+        }
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        transition: transform 0.2s;
+
+        &:hover{
+            transform: translateX(10px);
+        }
+
+        span {
+            display: flex;
+            align-items: center;
+            img {
+                width: 90px;
+                height: 90px;
+                border-radius: 50%;
+            }
+
+            div {
+                margin-left: 23px;
+                strong {
+                    color: #3D3D4D;
+                    font-size: 20px;
+                    line-height: 28px;
+                }
+
+                p {
+                    font-size: 14px;
+                    line-height: 21px;
+                    color: #A8A8B3;
+                    margin-top: 5px;
+                }
+            }
+        }
+    }
+
+    .arrow {
+        color: #CBCBD6;
+    }
+`;
