@@ -1,62 +1,69 @@
-import React from 'react';
+import React, { useState, FormEvent } from 'react';
 import { FiChevronRight } from 'react-icons/fi';
 import { Title, Form, Repositories } from './styles';
+import api from '../../services/api';
 
 import logoImg from '../../assets/logo.svg';
 
-const Dashboard: React.FC = () => (
-  <>
-    <img src={logoImg} alt="Github Explorer" />
-    <Title>Explore repositórios no Github</Title>
+interface Repository {
 
-    <Form>
-      <input placeholder="Digite o nome do reposositório" />
-      <button type="submit">Pesquisar</button>
-    </Form>
+    full_name: string;
+    owner: {
+        login: string;
+        avatar_url: string;
+    },
+    description: string;
+}
 
-    <Repositories>
-      <a href="test">
-        <span>
-          <img
-            src="https://avatars3.githubusercontent.com/u/3678986?s=400&u=acb3a9debae346b3a0bdcce82d997e9e302e9ab0&v=4"
-            alt="Bruno Moura"
-          />
-          <div>
-            <strong>bruno8moura/binary-to-decimal</strong>
-            <p>A NodeJS Application that converts a binary number into a decimal one.</p>
-          </div>
-        </span>
-        <FiChevronRight size={20} className="arrow" />
-      </a>
-      <a href="test">
-        <span>
-          <img
-            src="https://avatars3.githubusercontent.com/u/3678986?s=400&u=acb3a9debae346b3a0bdcce82d997e9e302e9ab0&v=4"
-            alt="Bruno Moura"
-          />
-          <div>
-            <strong>bruno8moura/binary-to-decimal</strong>
-            <p>A NodeJS Application that converts a binary number into a decimal one.</p>
-          </div>
-        </span>
-        <FiChevronRight size={20} className="arrow" />
-      </a>
-      <a href="test">
-        <span>
-          <img
-            src="https://avatars3.githubusercontent.com/u/3678986?s=400&u=acb3a9debae346b3a0bdcce82d997e9e302e9ab0&v=4"
-            alt="Bruno Moura"
-          />
-          <div>
-            <strong>bruno8moura/binary-to-decimal</strong>
-            <p>A NodeJS Application that converts a binary number into a decimal one.</p>
-          </div>
-        </span>
-        <FiChevronRight size={20} className="arrow" />
-      </a>
-    </Repositories>
+const Dashboard: React.FC = () => {
+  const [searchedRepo, setSearchedRepo] = useState('');
+  const [repositories, setRepositories] = useState<Repository[]>([]);
 
-  </>
-);
+  async function handleAddRepository(event: FormEvent<HTMLFormElement>): Promise<void> {
+    event.preventDefault();
+
+    if (!searchedRepo) return;
+    const response = await api.get<Repository>(`repos/${searchedRepo.trim()}`);
+    const repository: Repository = response.data;
+    setRepositories([...repositories, repository]);
+    setSearchedRepo('');
+  }
+
+  return (
+    <>
+      <img src={logoImg} alt="Github Explorer" />
+      <Title>Explore repositórios no Github</Title>
+
+      <Form onSubmit={handleAddRepository}>
+        <input placeholder="Digite o nome do reposositório" value={searchedRepo} onChange={(e) => setSearchedRepo(e.target.value)} />
+        <button type="submit">Pesquisar</button>
+      </Form>
+
+      <Repositories>
+        {repositories.map((repository) => (
+          <a href="test">
+            <span>
+              <img
+                src={repository.owner.avatar_url}
+                alt={repository.full_name}
+              />
+              <div>
+                <strong>
+                  {repository.full_name}
+                </strong>
+                <p>
+                  {repository.description}
+                </p>
+              </div>
+            </span>
+            <FiChevronRight size={20} className="arrow" />
+          </a>
+        ))}
+
+      </Repositories>
+
+    </>
+  );
+};
 
 export default Dashboard;

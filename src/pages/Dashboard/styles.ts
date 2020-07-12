@@ -70,6 +70,7 @@ export const Repositories = styled.div`
 
         span {
             display: flex;
+            flex: 1;
             align-items: center;
             img {
                 width: 90px;
