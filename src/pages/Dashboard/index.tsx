@@ -7,7 +7,6 @@ import {
 import api from '../../services/api';
 
 import logoImg from '../../assets/logo.svg';
-import Repository from '../Repository';
 
 interface Repository {
 
