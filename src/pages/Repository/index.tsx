@@ -85,7 +85,7 @@ const Repository: React.FC = () => {
 
       <Issues>
         {issues.map((issue) => (
-          <a href={issue.html_url} key={issue.id}>
+          <a href={issue.html_url} key={issue.id} target="blank">
             <span>
               <div>
                 <strong>
