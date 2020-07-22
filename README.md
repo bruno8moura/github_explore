@@ -4,7 +4,7 @@ Webapp to explore github projects.
 
 ## App
 
-![Operations](project_images/githubexplorer.gif)
+![Application](./project_images/githubexplorer.gif)
 
 ## Why
 
