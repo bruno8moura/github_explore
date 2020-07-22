@@ -1,4 +1,4 @@
-# Repository Like Web
+# Github Explorer
 
 Webapp to explore github projects.
 
