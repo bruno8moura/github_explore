@@ -28,7 +28,7 @@ NodeJS version: ^12
 
 ## Running application
 
-yarn dev
+yarn start
 
 ## Build with
 
@@ -38,9 +38,9 @@ yarn dev
 - [axios](https://www.npmjs.com/package/axios) - A lib ot make http requests. It is a good choice because we can patterned the url base for a especifi domain.
 - [polished](https://www.npmjs.com/package/polished) - Tool for creating styles for your html.
 - [react](https://www.npmjs.com/package/react) - The core library for React.
-- [react-dom]() - Enable React to communicate with HTML throught the DOM API.
+- [react-dom](https://www.npmjs.com/package/react-dom) - Enable React to communicate with HTML throught the DOM API.
 - [react-icons](https://www.npmjs.com/package/react-icons) - Enable a bunch of icons to include in project.
-- [react-router-dom][(](https://www.npmjs.com/package/react-router-dom)) - DOM bindings for React Router.
+- [react-router-dom](https://www.npmjs.com/package/react-router-dom) - DOM bindings for React Router.
 - [react-scripts]() - Scripts and configurations used by 'create-react-app' app.
 - [remove]() - Sync and async versions of `rm -r`, handling both files and directories.
 - [styled-components](https://www.npmjs.com/package/styled-components) - A powerful tool that helps in css organization, isolating the css by components.
